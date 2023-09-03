@@ -1,40 +1,36 @@
 ﻿namespace bubblesort;
-
 class Program
 {
-    static void SortArray()
+    static void BubbleSort(List<int> input)
     {
-        int[] array = { 3, 2, 6, 7, 5, 9, 8, 1, 12, 10, 11, 4 };
-        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+        int n = input.Count - 1;
+        bool swapped;
 
-        var n = array.Length;
-        for (int i = 0; i < n - 1; i++)
-            for (int j = 0; j < n - i - 1; j++)
-                if (array[j] > array[j + 1])
-                {
-                    var tempVar = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = tempVar;
-                }
-
-        Console.Write("Output:   ");
-        foreach (var item in array)
+        for (int i = 0; i < n; i++)
         {
-            Console.Write(item + ", ");
+            swapped = false;
+            for (int j = 0; j < n - i; j++)
+            {
+                if (input[j] > input[j + 1])
+                {
+                    (input[j], input[j + 1]) = (input[j + 1], input[j]);
+                    swapped = true;
+                }
+            }
+            if (!swapped) break;
         }
 
-        Console.Write("\nExpected: ");
-        foreach (var item in expected)
+        for (int i = 0; i < n + 1; i++)
         {
-            Console.Write(item + ", ");
+            Console.Write(input[i]);
+            if (i < n) Console.Write(", ");
         }
     }
 
     static void Main(string[] args)
     {
-        SortArray();
-
-        // Todo:
-        // Write the sorting algorithm
+        List<int> sortMe = new() { 45, 84, 735, -7, 90, 420, -6, 9, 0, 257, 5231 };
+        BubbleSort(sortMe);
+        Console.ReadKey();
     }
 }
