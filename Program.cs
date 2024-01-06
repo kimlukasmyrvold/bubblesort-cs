@@ -128,7 +128,7 @@ class Program
         Stopwatch watch = new();
 
         Console.WriteLine("Creating the array...");
-        short[] array = CreateArray(5_00);
+        short[] array = CreateArray(500_000);
         Console.WriteLine("Array created!\n");
 
         Console.WriteLine("Sorting the array...");
